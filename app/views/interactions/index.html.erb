@@ -1,0 +1,62 @@
+<h1 onclick="sendData()">welcome to the Interactions Index</h1>
+
+<% @interactions.each do |int| %>
+  <%= int.move %>
+  <%= int.time %> 
+<% end %> 
+
+<% str = "this is a test string" %>
+<script type="text/javascript">
+
+var trackEnabled = true;
+var coordinates = "";
+var timeOfLoad = "";
+
+window.onload = function() {
+  timeOfLoad += Date.now();
+}
+
+window.onmousemove = function (event) {
+  if (trackEnabled) {
+    printMovement(event);
+    trackEnabled = false;
+  };
+};
+
+function printMovement (event) {
+  coordinates += ("("+event.clientX+","+event.clientY+")");
+  console.log("("+event.clientX+","+event.clientY+")");
+}
+
+timer = window.setInterval(function() {
+  trackEnabled = true;
+}, 400);
+
+mouseTrackTimer = window.setInterval(function() {
+  trackEnabled = true;
+}, 400);
+
+// sendCoordTimer = window.setInterval(function() {
+function sendData() {  
+  console.log(coordinates);
+  $.ajax({
+    type: "POST",
+    url: 'http://localhost:3000/interactions',
+    datatType: 'json',
+    data: {
+      interaction: {
+        move: coordinates
+      }  
+    },
+    success: function(response) {
+      alert('works');
+    }
+  });
+} 
+
+// 9000);
+
+function showErb() {
+  console.log("<%= str %>")
+}
+</script>
