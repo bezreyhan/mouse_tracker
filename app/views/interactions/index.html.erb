@@ -1,11 +1,12 @@
 <h1 onclick="sendData()">welcome to the Interactions Index</h1>
 
+<div id="mapContainer"></div>
+
 <% @interactions.each do |int| %>
   <%= int.move %>
   <%= int.time %> 
 <% end %> 
 
-<% str = "this is a test string" %>
 <script type="text/javascript">
 
 var trackEnabled = true;
@@ -56,7 +57,36 @@ function sendData() {
 
 // 9000);
 
-function showErb() {
-  console.log("<%= str %>")
+// var heatmap = {}
+window.onload = function() {
+
+  var config = {
+      "radius": 30,
+      "element": document.getElementById("mapContainer"),
+      "visible": true,
+      "opacity": 40,
+      "gradient": { 0.45: "rgb(0,0,255)", 0.55: "rgb(0,255,255)", 0.65: "rgb(0,255,0)", 0.95: "yellow", 1.0: "rgb(255,0,0)" }
+  };
+
+  var heatmap = heatmapFactory.create(config);
+  heatmap.store.setDataSet({ max: 10, data: [{x: 10, y: 20, count: 2} ]} );
+  heatmap.store.addDataPoint(300, 220);
+  heatmap.store.addDataPoint(10, 40);
+  heatmap.store.addDataPoint(400, 60);
+  heatmap.store.addDataPoint(800, 300);
+  heatmap.store.addDataPoint(42, 33);
+  heatmap.store.addDataPoint(10, 20);
 }
+
+
+
 </script>
+
+<style type="text/css">
+#mapContainer {
+  height: 1000px;
+  width: 1000px;
+  border: 2px solid black;
+  position: relative;
+}
+</style>
