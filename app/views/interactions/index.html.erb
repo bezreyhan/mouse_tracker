@@ -1,4 +1,6 @@
-<h1 onclick="sendData()">welcome to the Interactions Index</h1>
+<h7 onclick="sendData()">welcome to the Interactions Index</h7>
+<h1 onlclick="displayMap()">Show me the Mappy</h1>
+
 
 <div id="mapContainer"></div>
 
@@ -9,59 +11,99 @@
 
 <script type="text/javascript">
 
-var trackEnabled = true;
-var coordinates = "";
-var timeOfLoad = "";
-
 window.onload = function() {
-  timeOfLoad += Date.now();
-}
 
-window.onmousemove = function (event) {
-  if (trackEnabled) {
-    printMovement(event);
-    trackEnabled = false;
+  var trackOn = true;
+  var coordinatesString = "";
+  var coordinatesArray = [];
+  var timeOfLoad = Date.now();
+
+  window.onmousemove = function (event) {
+    if (trackOn) {
+      printMovement(event);
+      trackOn = false;
+    };
   };
-};
 
-function printMovement (event) {
-  coordinates += ("("+event.clientX+","+event.clientY+")");
-  console.log("("+event.clientX+","+event.clientY+")");
-}
+  function printMovement (event) {
+    coordinatesString += ("("+event.clientX+","+event.clientY+")");
+    coordinatesArray.push({"x":event.clientX, "y":event.clientY});
+    console.log("("+event.clientX+","+event.clientY+")");
+  }
 
-timer = window.setInterval(function() {
-  trackEnabled = true;
-}, 400);
+  mouseTrackTimer = window.setInterval(function() {
+    trackOn = true;
+  }, 10);
 
-mouseTrackTimer = window.setInterval(function() {
-  trackEnabled = true;
-}, 400);
-
-// sendCoordTimer = window.setInterval(function() {
-function sendData() {  
-  console.log(coordinates);
-  $.ajax({
-    type: "POST",
-    url: 'http://localhost:3000/interactions',
-    datatType: 'json',
-    data: {
-      interaction: {
-        move: coordinates
-      }  
-    },
-    success: function(response) {
-      alert('works');
+  //remove duplictes and set a count to each object 
+  //in coordinatesArray so that the data can be mapped
+  var cleanData = []
+  function cleanCoordinatesArray(){
+    for(var i=0; i<coordinatesArray.length; i++) {
+      var obj = coordinatesArray[i]
+      if(matchFound(obj) === false){
+        var countObj = obj;
+        countObj.count = 1;
+        cleanData.push(countObj);
+      }
     }
-  });
-} 
+    displayMap();
+  }
 
-// 9000);
+  $('h1').on('click', cleanCoordinatesArray);
 
-// var heatmap = {}
-window.onload = function() {
+  function matchFound(obj) {
+    if (cleanData.length === 0) {
+      return false
+    } 
+    else {
+      for (var i=0; i<cleanData.length; i++) {
+        var cleanObj = cleanData[i];
+        if (obj.x === cleanObj.x && obj.y === cleanObj.y) {
+          cleanObj.count += 1;
+          return true;
+        }
+      }
+      return false
+    }
+  }
+
+  // sendCoordTimer = window.setInterval(function() {
+  function sendData() {  
+    console.log(coordinatesString);
+    $.ajax({
+      type: "POST",
+      url: 'http://localhost:3000/interactions',
+      datatType: 'json',
+      data: {
+        interaction: {
+          move: coordinatesString
+        }  
+      },
+      success: function(response) {
+        alert('works');
+      }
+    });
+  } 
+
+  // 9000);
+
+  function displayMap() {
+    heatmap.store.setDataSet({ max: 10, data: cleanData } );
+  }
+
+  // var config = {
+  //     "radius": 30,
+  //     "element": document.getElementById("mapContainer"),
+  //     "visible": true,
+  //     "opacity": 40,
+  //     "gradient": { 0.45: "rgb(0,0,255)", 0.55: "rgb(0,255,255)", 0.65: "rgb(0,255,0)", 0.95: "yellow", 1.0: "rgb(255,0,0)" }
+  // };
+
+  // var heatmap = heatmapFactory.create(config);
 
   var config = {
-      "radius": 30,
+      "radius": 10,
       "element": document.getElementById("mapContainer"),
       "visible": true,
       "opacity": 40,
@@ -69,15 +111,14 @@ window.onload = function() {
   };
 
   var heatmap = heatmapFactory.create(config);
-  heatmap.store.setDataSet({ max: 10, data: [{x: 10, y: 20, count: 2} ]} );
-  heatmap.store.addDataPoint(300, 220);
-  heatmap.store.addDataPoint(10, 40);
-  heatmap.store.addDataPoint(400, 60);
-  heatmap.store.addDataPoint(800, 300);
-  heatmap.store.addDataPoint(42, 33);
-  heatmap.store.addDataPoint(10, 20);
+  // heatmap.store.setDataSet({ max: 10, data: [{x: 10, y: 20, count: 2} ]} );
+//   heatmap.store.addDataPoint(300, 220);
+//   heatmap.store.addDataPoint(10, 40);
+//   heatmap.store.addDataPoint(400, 60);
+//   heatmap.store.addDataPoint(800, 300);
+//   heatmap.store.addDataPoint(42, 33);
+//   heatmap.store.addDataPoint(10, 20);
 }
-
 
 
 </script>
