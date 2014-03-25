@@ -62,24 +62,22 @@ function matchFound(obj) {
   }
 }
 
-sendCoordTimer = window.setInterval(function() {
-  function sendData() {
-    console.log(coordinatesString);
-    $.ajax({
-      type: "POST",
-      url: 'http://localhost:3000/interactions',
-      datatType: 'json',
-      data: {
-        interaction: {
-          move: coordinatesString
-        }
-      },
-      success: function(response) {
-        alert('works');
-      }
-    });
-  }
-}, 9000);
+// sendCoordTimer = window.setInterval(function sendData() {
+//   console.log(coordinatesString);
+//   $.ajax({
+//     type: "POST",
+//     url: 'http://localhost:3000/interactions',
+//     datatType: 'json',
+//     data: {
+//       interaction: {
+//         move: coordinatesString
+//       }
+//     },
+//     success: function(response) {
+//       alert('works');
+//     }
+//   });
+// }, 9000);
 
 function displayMap() {
   console.log("displayMap is fired");
