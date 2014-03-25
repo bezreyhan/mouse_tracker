@@ -7,14 +7,13 @@ var timeOfLoad = Date.now();
 var windowLength = String(window.innerWidth -25)+"px";
 
 document.body.innerHTML += "<div onclick=cleanCoordinatesArray() id='collectData' style='width:20px;height:20px;border:2px solid black;'></div>";
-var button = document.getElementById('collectData');
 
-document.body.innerHTML += "<div id='heatMapContainer' style='height:1000px;border:2px solid black;z-index:-500;position:absolute;top:4px;left:4px'></div>";
+document.body.innerHTML += "<div id='heatMapContainer' style='z-index:-500;height:1000px;border:2px solid black;position:absolute;top:4px;left:4px'></div>";
 document.getElementById('heatMapContainer').style.width = windowLength;
 
-var script = document.createElement('script');
-script.src = 'http://localhost:3000/assets/heatmap.js';
-document.body.appendChild(script);
+// var script = document.createElement('script');
+// script.src = 'http://localhost:3000/assets/heatmap.js';
+// document.body.appendChild(script);
 
 window.onmousemove = function (event) {
   if (trackOn) {
@@ -24,9 +23,9 @@ window.onmousemove = function (event) {
 };
 
 function printMovement (event) {
-  coordinatesString += ("("+event.clientX+","+event.clientY+")");
-  coordinatesArray.push({"x":event.clientX, "y":event.clientY});
-  console.log("("+event.clientX+","+event.clientY+")");
+  coordinatesString += ("("+event.pageX+","+event.pageY+")");
+  coordinatesArray.push({"x":event.pageX, "y":event.pageY});
+  console.log("("+event.pageX+","+event.pageY+")");
 }
 
 mouseTrackTimer = window.setInterval(function() {

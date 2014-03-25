@@ -16,31 +16,4 @@
   <%= int.time %> 
 <% end %> 
 
-<script type="text/javascript">
-function hi() {
-  var mapLib = document.createElement('script');
-  alert("step1");
-  mapLib.setAttribute('type','text/javascript');
-  alert("step2");
-  mapLib.setAttribute('charset','UTF-8');
-  alert("step3");
-  mapLib.setAttribute('src','http://localhost:3000/assets/heatmap.js');
-  alert("step4");
-  document.body.appendChild(mapLib);
-  var bookmarklet = document.createElement('script');
-  alert("step5");
-  bookmarklet.setAttribute('type','text/javascript');
-  alert("step6");
-  bookmarklet.setAttribute('charset','UTF-8');
-  alert("step7");
-  bookmarklet.setAttribute('src','http://localhost:3000/assets/bookmarklet.js');
-  alert("step8");
-  document.body.appendChild(bookmarklet);
-};
-
-
-
-
-</script>
-
 
