@@ -52,8 +52,8 @@ function cleanCoordinatesArray(){
 
 function matchFound(obj) {
   if (cleanData.length === 0) {
-    return false
-  } 
+    return false;
+  }
   else {
     for (var i=0; i<cleanData.length; i++) {
       var cleanObj = cleanData[i];
@@ -62,7 +62,7 @@ function matchFound(obj) {
         return true;
       }
     }
-    return false
+    return false;
   }
 }
 
@@ -88,10 +88,10 @@ function sendData() {
 function displayMap() {
   console.log("displayMap is fired");
   var config = {
-    "radius": 10,
+    "radius": 50,
     "element": document.getElementById("heatMapContainer"),
     "visible": true,
-    "opacity": 40,
+    "opacity": 100,
     "gradient": { 0.45: "rgb(0,0,255)", 0.55: "rgb(0,255,255)", 0.65: "rgb(0,255,0)", 0.95: "yellow", 1.0: "rgb(255,0,0)" }
   };
 
@@ -99,6 +99,3 @@ function displayMap() {
 
   heatmap.store.setDataSet({ max: 10, data: cleanData } );
 }
-
-
-// }
