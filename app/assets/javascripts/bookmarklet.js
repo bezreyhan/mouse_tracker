@@ -4,11 +4,13 @@ var coordinatesString = "";
 var coordinatesArray = [];
 var timeOfLoad = Date.now();
 var windowLength = String(window.innerWidth -25)+"px";
+var bodyHeight = String(document.body.scrollHeight)+"px";
 
 document.body.innerHTML += "<div onclick=cleanCoordinatesArray() id='collectData' style='width:20px;height:20px;border:2px solid black;'></div>";
 
 document.body.innerHTML += "<div id='heatMapContainer' style='z-index:-1;height:1000px;border:2px solid black;position:absolute;top:4px;left:4px'></div>";
 document.getElementById('heatMapContainer').style.width = windowLength;
+document.getElementById('heatMapContainer').style.height = bodyHeight;
 
 window.onmousemove = function (event) {
   if (trackOn) {
