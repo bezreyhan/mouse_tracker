@@ -1,5 +1,4 @@
-// window.onload = function() {
-//doe thsi show up
+
 var trackOn = true;
 var coordinatesString = "";
 var coordinatesArray = [];
@@ -8,12 +7,8 @@ var windowLength = String(window.innerWidth -25)+"px";
 
 document.body.innerHTML += "<div onclick=cleanCoordinatesArray() id='collectData' style='width:20px;height:20px;border:2px solid black;'></div>";
 
-document.body.innerHTML += "<div id='heatMapContainer' style='z-index:-500;height:1000px;border:2px solid black;position:absolute;top:4px;left:4px'></div>";
+document.body.innerHTML += "<div id='heatMapContainer' style='z-index:-1;height:1000px;border:2px solid black;position:absolute;top:4px;left:4px'></div>";
 document.getElementById('heatMapContainer').style.width = windowLength;
-
-// var script = document.createElement('script');
-// script.src = 'http://localhost:3000/assets/heatmap.js';
-// document.body.appendChild(script);
 
 window.onmousemove = function (event) {
   if (trackOn) {
@@ -93,8 +88,8 @@ function displayMap() {
     "opacity": 100,
     "gradient": { 0.45: "rgb(0,0,255)", 0.55: "rgb(0,255,255)", 0.65: "rgb(0,255,0)", 0.95: "yellow", 1.0: "rgb(255,0,0)" }
   };
-
   var heatmap = heatmapFactory.create(config);
-
   heatmap.store.setDataSet({ max: 10, data: cleanData } );
+  //change z-index inorder to make the heatMap the first layer
+  document.getElementById("heatMapContainer").style.zIndex="1";
 }
