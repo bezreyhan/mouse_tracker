@@ -2,7 +2,7 @@
 <h1>Show me the Mappy</h1>
 
 
-<div id="mapContainer"></div>
+<!-- <div id="heatMapContainer"></div> -->
 
 <% @interactions.each do |int| %>
   <%= int.move %>
@@ -17,6 +17,16 @@ window.onload = function() {
   var coordinatesString = "";
   var coordinatesArray = [];
   var timeOfLoad = Date.now();
+  var windowLength = String(window.innerWidth -25)+"px";
+
+  // var heatMapDiv = document.createElement('div');
+  // heatMapDiv.setAttribute('id', 'heatMapContainer');
+  // heatMapDiv.style.width = windowLength;
+  // heatMapDiv.style.height = '900px';
+  // heatMapDiv.style.border = '2px solid black';
+  var body =  document.getElementsByTagName('body')[0];
+  body.innerHTML += "<div id='heatMapContainer' style='height:1000px;border:2px solid black;z-index:-500;position:absolute;top:4px;left:4px'></div>"
+  document.getElementById('heatMapContainer').style.width = windowLength;
 
   window.onmousemove = function (event) {
     if (trackOn) {
@@ -47,6 +57,8 @@ window.onload = function() {
         cleanData.push(countObj);
       }
     }
+    console.log(coordinatesArray.length);
+    console.log(cleanData.length);
     displayMap();
   }
 
@@ -89,29 +101,25 @@ window.onload = function() {
   // 9000);
 
   function displayMap() {
-    heatmap.store.setDataSet({ max: 10, data: cleanData } );
-  }
-
-  var config = {
+    console.log("displayMap is fired");
+    var config = {
       "radius": 10,
-      "element": document.getElementById("mapContainer"),
+      "element": document.getElementById("heatMapContainer"),
       "visible": true,
       "opacity": 40,
       "gradient": { 0.45: "rgb(0,0,255)", 0.55: "rgb(0,255,255)", 0.65: "rgb(0,255,0)", 0.95: "yellow", 1.0: "rgb(255,0,0)" }
-  };
+    };
 
-  var heatmap = heatmapFactory.create(config);
+    var heatmap = heatmapFactory.create(config);
+
+    heatmap.store.setDataSet({ max: 10, data: cleanData } );
+  }
+
+
 //   heatmap.store.addDataPoint(300, 220);
+
 }
 
 
 </script>
 
-<style type="text/css">
-#mapContainer {
-  height: 1000px;
-  width: 1000px;
-  border: 2px solid black;
-  position: relative;
-}
-</style>
