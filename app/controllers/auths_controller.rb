@@ -17,11 +17,11 @@ class AuthsController < ApplicationController
         flash[:notice] = "You are logged in"
       else
         redirect_to new_auth_path
-        flash[:notice] = "email and password did not match"
+        flash[:error] = "email and password did not match"
       end
     else
       redirect_to new_auth_path
-      flash[:notice] = "We couldn't find that email. Try again or create an account."   
+      flash[:error] = "We couldn't find that email. Try again or create an account."   
     end
   end
 

@@ -6,7 +6,7 @@ var timeOfLoad = Date.now();
 var windowLength = String(window.innerWidth -25)+"px";
 var bodyHeight = String(document.body.scrollHeight)+"px";
 
-document.body.innerHTML += "<div onclick=cleanCoordinatesArray() id='collectData' style='width:20px;height:20px;border:2px solid black;'></div>";
+document.body.innerHTML += "<div onclick=cleanCoordinatesArray() id='collectData' style='width:20px;height:20px;border:2px solid black;z-index:9000;position:absolute;top:0;right:0'></div>";
 
 document.body.innerHTML += "<div id='heatMapContainer' style='z-index:-1;height:1000px;border:2px solid black;position:absolute;top:4px;left:4px'></div>";
 document.getElementById('heatMapContainer').style.width = windowLength;
@@ -44,6 +44,7 @@ function cleanCoordinatesArray(){
   console.log(coordinatesArray.length);
   console.log(cleanData.length);
   displayMap();
+  sendData();
 }
 
 function matchFound(obj) {
@@ -62,21 +63,26 @@ function matchFound(obj) {
   }
 }
 
-// sendCoordTimer = window.setInterval(function sendData() {
-//   console.log(coordinatesString);
-//   $.ajax({
-//     type: "POST",
-//     url: 'http://localhost:3000/interactions',
-//     datatType: 'json',
-//     data: {
-//       interaction: {
-//         move: coordinatesString
-//       }
-//     },
-//     success: function(response) {
-//       alert('works');
-//     }
-//   });
+// sendCoordTimer = window.setInterval(
+function sendData() {
+  console.log(coordinatesString);
+  $.ajax({
+    type: "POST",
+    url: 'http://localhost:3000/interactions',
+    datatType: 'json',
+    data: {
+      interaction: {
+        move: coordinatesString,
+        user_id: 2,
+        time: new Date(),
+        url: document.URL
+      }
+    },
+    success: function(response) {
+      alert('works');
+    }
+  });
+}
 // }, 9000);
 
 function displayMap() {

@@ -1,4 +1,9 @@
 MouseTracker::Application.routes.draw do
+  get "sites/new"
+  get "sites/create"
+  get "sites/destroy"
+  get "sites/show"
+  get "sites/index"
   resources :auths
   resources :interactions
   resources :users

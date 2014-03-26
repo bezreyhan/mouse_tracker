@@ -5,7 +5,9 @@ class InteractionsController < ApplicationController
   end
 
   def create
+    site = Site.find_or_create_by(url: params["interaction"]["url"])
     @interaction = Interaction.new(int_params)
+    @interaction.site_id = site.id
     if @interaction.save
       redirect_to interactions_path
     else
@@ -29,6 +31,6 @@ class InteractionsController < ApplicationController
   private 
 
   def int_params
-    params.require(:interaction).permit(:move, :time)
+    params.require(:interaction).permit(:move, :time, :user_id)
   end
 end
