@@ -20,7 +20,7 @@ window.onmousemove = function (event) {
 };
 
 function printMovement (event) {
-  coordinatesString += ("("+event.pageX+","+event.pageY+")");
+  coordinatesString += (event.pageX+","+event.pageY+";");
   coordinatesArray.push({"x":event.pageX, "y":event.pageY});
   console.log("("+event.pageX+","+event.pageY+")");
 }
