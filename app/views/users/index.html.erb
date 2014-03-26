@@ -1,0 +1,7 @@
+<h1>User Index</h1>
+
+<% @users.each do |user| %> 
+  <%= user.hashed_password %> 
+  <%= user.email %>
+  <br>
+<% end %> 

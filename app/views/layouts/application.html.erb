@@ -7,8 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<%= render "layouts/navbar" %>
+<%= flash[:notice] %> 
 <%= yield %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+<%= params %> 
 </body>
 </html>

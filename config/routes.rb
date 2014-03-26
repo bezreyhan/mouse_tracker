@@ -1,4 +1,5 @@
 MouseTracker::Application.routes.draw do
+  resources :auths
   resources :interactions
   resources :users
 
