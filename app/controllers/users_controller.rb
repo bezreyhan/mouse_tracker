@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     else  
       if @user.save
         session[:user_id] = @user.id
-        redirect_to users_path
+        redirect_to scripts_path
       else
         redirect_to new_user_path
         flash[:error] = "aww shucks, user was not created!"
@@ -30,6 +30,9 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+  end
+
+  def scripts
   end
 
   private 

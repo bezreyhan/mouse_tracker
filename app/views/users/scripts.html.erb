@@ -1,0 +1,27 @@
+<h1>Drag to Bookmark</h1>
+<a href="javascript:javascript: (function () {
+  var bookmarklet = document.createElement('script'); 
+  bookmarklet.setAttribute('src', 'http://localhost:3000/javascripts/bookmarklet.js');
+  document.body.appendChild(bookmarklet); 
+  var mapLib = document.createElement('script'); 
+  mapLib.setAttribute('src', 'http://localhost:3000/assets/heatmap.js');
+  document.body.appendChild(mapLib);
+  var jQueryLib = document.createElement('script'); 
+  jQueryLib.setAttribute('src', 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js');
+  document.body.appendChild(jQueryLib);
+  mouseTrackerUserId = 2;
+}());;">Get Data</a>
+
+<h1>Copy script</h1>
+
+<div>
+  <pre>
+    &lt;script type='text/javascript' src='http://localhost:3000/javascripts/bookmarklet.js'&gt; &lt;/script&gt;
+
+    &lt;script type='text/javascript' src='http://localhost:3000/assets/heatmap.js'&gt; &lt;/script&gt;
+
+    &lt;script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'&gt; &lt;/script&gt;
+
+    &lt;script type='text/javascript'&gt; mouseTrackerUserId = <%= current_user.id %> &lt;/script&gt;
+  </pre>
+</div>

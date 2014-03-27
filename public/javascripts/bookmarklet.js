@@ -2,7 +2,7 @@
 var trackOn = true;
 var coordinatesString = "";
 var coordinatesArray = [];
-var timeOfLoad = Date.now();
+var timeOfLoad = new Date();
 var windowLength = String(window.innerWidth -25)+"px";
 var bodyHeight = String(document.body.scrollHeight)+"px";
 var mouseTrackerUserId;
@@ -75,7 +75,7 @@ function sendData() {
       interaction: {
         move: coordinatesString,
         user_id: mouseTrackerUserId,
-        time: new Date(),
+        time: timeOfLoad,
         url: document.URL,
         window_width: windowLength,
         body_height: bodyHeight

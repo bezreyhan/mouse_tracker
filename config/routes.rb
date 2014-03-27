@@ -4,6 +4,7 @@ MouseTracker::Application.routes.draw do
   resources :auths
   resources :interactions
   resources :users
+  get 'users/:id/scripts' => "users#scripts", as: :scripts
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
