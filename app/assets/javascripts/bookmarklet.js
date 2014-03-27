@@ -5,6 +5,7 @@ var coordinatesArray = [];
 var timeOfLoad = Date.now();
 var windowLength = String(window.innerWidth -25)+"px";
 var bodyHeight = String(document.body.scrollHeight)+"px";
+var mouseTrackerUserId;
 
 document.body.innerHTML += "<div onclick=cleanCoordinatesArray() id='collectData' style='width:20px;height:20px;border:2px solid black;z-index:9000;position:absolute;top:0;right:0'></div>";
 
@@ -69,11 +70,11 @@ function sendData() {
   $.ajax({
     type: "POST",
     url: 'http://localhost:3000/interactions',
-    datatType: 'json',
+    datatType: 'jsonp',
     data: {
       interaction: {
         move: coordinatesString,
-        user_id: 2,
+        user_id: mouseTrackerUserId,
         time: new Date(),
         url: document.URL
       }

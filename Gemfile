@@ -5,6 +5,8 @@ gem 'rails', '4.0.2'
 gem 'bcrypt', github: 'codahale/bcrypt-ruby'
 gem 'bootstrap-sass', '~> 3.1.0'
 
+gem 'rack-cors',
+  :require => 'rack/cors'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
