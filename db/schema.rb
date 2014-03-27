@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326200501) do
+ActiveRecord::Schema.define(version: 20140327202557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20140326200501) do
     t.datetime "updated_at"
     t.integer  "site_id"
     t.datetime "time"
+    t.integer  "window_width"
+    t.integer  "body_height"
   end
 
   add_index "interactions", ["site_id"], name: "index_interactions_on_site_id", using: :btree

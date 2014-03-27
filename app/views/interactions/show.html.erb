@@ -1,12 +1,9 @@
 <h1>Interaction</h1>
 
-<!-- <iframe src=<%= @url %> </iframe> -->
-
 <script type="text/javascript">
-// window.onload = alert("hi")
-// $("body").append("<iframe src=<%= @url %> </iframe>");
 
 window.onload = function() {
+  $("body").append("<iframe src=<%= @url %> style='width:' > </iframe>");
   
   var windowLength = String(window.innerWidth -25)+"px";
   var bodyHeight = String(document.body.scrollHeight)+"px";

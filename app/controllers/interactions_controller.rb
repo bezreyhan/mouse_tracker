@@ -54,6 +54,6 @@ class InteractionsController < ApplicationController
   private 
 
   def int_params
-    params.require(:interaction).permit(:move, :time, :user_id)
+    params.require(:interaction).permit(:move, :time, :user_id, :window_width, :body_height)
   end
 end
