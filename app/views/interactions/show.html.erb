@@ -3,7 +3,8 @@
 <script type="text/javascript">
 
 window.onload = function() {
-  $("body").append("<iframe src=<%= @url %> style='width:' > </iframe>");
+  //create iframe
+  $("body").append("<iframe src=<%= @url %> style='width:<%= @interaction.window_width %>px;height:<%= @interaction.body_height %>px'</iframe>");
   
   var windowLength = String(window.innerWidth -25)+"px";
   var bodyHeight = String(document.body.scrollHeight)+"px";

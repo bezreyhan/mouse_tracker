@@ -20,7 +20,7 @@ table, th, td{
 }
 
 iframe {
-  width: 1000px;
-  height: 1000px;
-  margin-left: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
