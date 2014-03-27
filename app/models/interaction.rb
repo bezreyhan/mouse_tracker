@@ -6,7 +6,7 @@ end
 
 private
 
-coords_string = "287,507;287,507;298,386;303,335;306,312;308,298;"
+# coords_string = "287,507;287,507;298,386;303,335;306,312;308,298;"
 
 def parse_coords(coords)
   parsedCoords=[]
@@ -16,8 +16,9 @@ def parse_coords(coords)
     pointArr = pointStr.split(",")
     parsedCoords << {x: pointArr[0].to_i, y: pointArr[1].to_i }
   end
-  puts parsedCoords.to_json
+  return parsedCoords.to_json
 end
+
 
 
 

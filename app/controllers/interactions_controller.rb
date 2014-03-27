@@ -32,6 +32,12 @@ class InteractionsController < ApplicationController
     end
   end
 
+  def show
+    @interaction = Interaction.find(params[:id])
+    @coordsArray = parse_coords(@interaction.move)
+    @url = Site.find(@interaction.site_id).url
+  end
+
   def edit
   end
 

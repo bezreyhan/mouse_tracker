@@ -5,7 +5,7 @@
   <th>Date</th>
   <% @sites.each do |site| %>
     <tr>
-      <td><%= link_to "test", site_path(site.id) %></td>
+      <td><%= link_to site.url, site_interactions_path(site.id) %></td>
     </tr>
   <% end %>   
 </table>

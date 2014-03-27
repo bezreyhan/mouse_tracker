@@ -1,0 +1,11 @@
+<h1>Site Interactions</h1>
+
+<table>
+  <th>Time</th>
+  
+  <%= @site_interactions.each do |si| %> 
+    <tr>
+    <td><%= link_to si.time, interaction_path(si.id) %></td>
+    </tr>
+  <% end %>   
+</table>
