@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   has_many :interactions
-  attr_accessor :password
+  has_many :sites, through: :interactions
 
+  attr_accessor :password
 
   def authenticated? pwd
       self.hashed_password ==

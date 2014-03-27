@@ -12,3 +12,9 @@
  *= require_tree .
  */
 @import "bootstrap";
+
+table, th, td{
+  border: 1px solid black;
+  margin: 0 auto;
+  min-width: 10px;
+}
