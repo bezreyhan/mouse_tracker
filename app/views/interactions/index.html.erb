@@ -1,19 +1,3 @@
-<h7 onclick="sendData()">welcome to the Interactions Index</h7>
-<h1>Show me the Mappy</h1>
-<a href="javascript:javascript: (function () {
-  var bookmarklet = document.createElement('script'); 
-  bookmarklet.setAttribute('src', 'http://localhost:3000/javascripts/bookmarklet.js');
-  document.body.appendChild(bookmarklet); 
-  var mapLib = document.createElement('script'); 
-  mapLib.setAttribute('src', 'http://localhost:3000/assets/heatmap.js');
-  document.body.appendChild(mapLib);
-  var jQueryLib = document.createElement('script'); 
-  jQueryLib.setAttribute('src', 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js');
-  document.body.appendChild(jQueryLib);
-  mouseTrackerUserId = 2;
-}());;">Get Data</a>
-
-<!-- <div id="heatMapContainer"></div> -->
 
 <% @interactions.each do |int| %>
   <%= int.move %>

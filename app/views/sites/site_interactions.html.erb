@@ -2,7 +2,9 @@
 
 <table>
   <th>Time</th>
-  
+  <tr>
+    <td><%= link_to "All", combined_interactions_site_path(@site.id) %> </td>
+  </tr>
   <%= @site_interactions.each do |si| %> 
     <tr>
     <td><%= link_to si.time, interaction_path(si.id) %></td>

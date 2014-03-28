@@ -1,12 +1,15 @@
-<h1>Sites#index</h1>
 
 <table>
   <th>URL</th>
   <th>Date</th>
-  <% @sites.each do |site| %>
-    <tr>
-      <td><%= link_to site.url, site_interactions_path(site.id) %></td>
-    </tr>
+  <% if @sites %>
+    <% @sites.each do |site| %>
+      <tr>
+        <td><%= link_to site.url, site_interactions_path(site.id) %></td>
+      </tr>
+    <% end %>
+  <% else %> 
+    <h2>No Sites have been tracked yet</h2>     
   <% end %>   
 </table>
 

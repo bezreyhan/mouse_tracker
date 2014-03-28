@@ -19,6 +19,14 @@ def parse_coords(coords)
   return parsedCoords.to_json
 end
 
+def combine_coords(coords)
+  combined_coords = ""
+  coords.each do |coord|
+    combined_coords += coord.move
+  end
+  return parse_coords(combined_coords)
+end
+
 
 
 

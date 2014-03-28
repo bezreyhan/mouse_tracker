@@ -14,5 +14,5 @@
 //= require jquery_ujs
 //= require heatmap.js
 //= require bootstrap
-//= require turbolinks
+// require turbolinks
 //= require_tree .

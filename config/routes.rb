@@ -3,6 +3,7 @@ MouseTracker::Application.routes.draw do
   resources :sites
   resources :auths
   resources :interactions
+  get 'interactions/site/:id' => "interactions#combined_interactions_site", as: :combined_interactions_site
   resources :users
   get 'users/:id/scripts' => "users#scripts", as: :scripts
 

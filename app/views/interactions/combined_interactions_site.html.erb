@@ -1,4 +1,4 @@
-<h1>Interaction</h1>
+
 
 <script type="text/javascript">
 
@@ -13,7 +13,7 @@ window.onload = function() {
   document.getElementById('heatMapContainer').style.height = bodyHeight;
 
 
-  var coordsArray = <%= raw @coordsArray %>
+  var coordsArray = <%= raw @combined_coords %>
   var cleanData = [];
 
   // adds a populates the cleanData array with coordinates that have a count attribute. This allows use to pass the cleanData array to the heatmapper
@@ -65,5 +65,5 @@ window.onload = function() {
 
 };
 
+
 </script>
-  

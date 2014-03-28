@@ -13,7 +13,7 @@ class AuthsController < ApplicationController
       user = User.find_by(email: params[:user][:email])
       if user.authenticated?(params[:user][:password])
         session[:user_id] = user.id
-        redirect_to interactions_path
+        redirect_to sites_path
         flash[:notice] = "You are logged in"
       else
         redirect_to new_auth_path
