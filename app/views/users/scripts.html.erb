@@ -1,29 +1,29 @@
 
 <div class="row-fluid">
   <div class="col-md-6">
-    <h1>Drag to Bookmark</h1>
+    <h1>Drag to Bookmarks Bar</h1>
     <div class="bookmarklet"><a class="bookmarkletLink" href="javascript:javascript: (function () {
       var bookmarklet = document.createElement('script'); 
-      bookmarklet.setAttribute('src', 'http://localhost:3000/javascripts/bookmarklet.js');
+      bookmarklet.setAttribute('src', 'http://mousemapper.herokuapp.com/javascripts/bookmarklet.js');
       document.body.appendChild(bookmarklet); 
       var mapLib = document.createElement('script'); 
-      mapLib.setAttribute('src', 'http://localhost:3000/assets/heatmap.js');
+      mapLib.setAttribute('src', 'http://mousemapper.herokuapp.com/assets/heatmap.js');
       document.body.appendChild(mapLib);
       var jQueryLib = document.createElement('script'); 
       jQueryLib.setAttribute('src', 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js');
       document.body.appendChild(jQueryLib);
       mouseTrackerUserId = <%= current_user.id %>;
     }());;"><span class="bookmarkletLinkExpansion"></span>Get Data</a>
-      <img class="fireIcon" src="http://localhost:3000/assets/fire.svg">
+      <img class="fireIcon" src="http://mousemapper.herokuapp.com/assets/fire.svg">
     </div>
   </div>
   <div class="col-md-6">
     <h1>Copy Script</h1>
     <div>
       <pre>
-        &lt;script type='text/javascript' src='http://localhost:3000/javascripts/bookmarklet.js'&gt; &lt;/script&gt;
+        &lt;script type='text/javascript' src='http://mousemapper.herokuapp.com/javascripts/copyScript.js'&gt; &lt;/script&gt;
 
-        &lt;script type='text/javascript' src='http://localhost:3000/assets/heatmap.js'&gt; &lt;/script&gt;
+        &lt;script type='text/javascript' src='http://mousemapper.herokuapp.com/assets/heatmap.js'&gt; &lt;/script&gt;
 
         &lt;script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'&gt; &lt;/script&gt;
 

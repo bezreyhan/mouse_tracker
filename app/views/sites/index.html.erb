@@ -8,8 +8,8 @@
   <div class="col-md-2">
 </div>  
 <div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
     <div class="tableShell">
       <table class="table table-striped">
         <th>#</th>
@@ -20,7 +20,7 @@
             <tr>
               <td><%= index %></td>
               <td><%= site.url %></td>
-              <td><%= link_to site.interactions.length, site_interactions_path(site.id) %></td>
+              <td><%= link_to Interaction.where(user_id: current_user.id, site_id: site.id).length, site_interactions_path(site.id) %></td>
             </tr>
           <% end %>
         <% else %> 
@@ -29,6 +29,6 @@
       </table>
     </div>
   </div>
-  <div class="col-md-4"></div>
+  <div class="col-md-3"></div>
 </div>
 

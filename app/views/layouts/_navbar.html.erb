@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><img class="mouseIcon" src="http://localhost:3000/assets/mouse_icon.png"></a>
+      <a class="navbar-brand" href="#"><img class="mouseIcon" src="http://localhost:3000/assets/mouse.svg"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,11 +17,11 @@
         <% if current_user %>
           <li class="navbarGreeting">Hi <%= current_user.name %></li>
         <% else %>
-            <% if controller_name = "auths" %>
+            <% if params[:controller] == "auths" %>
               <li><%= link_to "Sign up", new_user_path, class: "btn logIn" %></li>
             <% else %>   
               <li><%= link_to "Log In", new_auth_path, class: "btn logIn" %></li>
-            <% end %>   
+            <% end %>
         <% end %>
         <% if current_user %> 
           <li class="dropdown">

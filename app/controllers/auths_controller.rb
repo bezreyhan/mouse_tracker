@@ -1,7 +1,7 @@
 class AuthsController < ApplicationController
   def new
     if current_user
-      redirect_to interactions_path
+      redirect_to sites_path
       flash[:notice] = "you are logged alreday logged in. Logout to create a new account"
     else
       @user = User.new
