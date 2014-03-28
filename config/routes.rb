@@ -1,4 +1,6 @@
 MouseTracker::Application.routes.draw do
+  root "users#new"
+
   get 'site/:id/interactions' => "sites#site_interactions", as: :site_interactions
   resources :sites
   resources :auths
