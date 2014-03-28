@@ -7,7 +7,7 @@ var windowLength = String(window.innerWidth -25)+"px";
 var bodyHeight = String(document.body.scrollHeight)+"px";
 var mouseTrackerUserId;
 
-document.body.innerHTML += "<img class='fireIcon' onclick=cleanCoordinatesArray() id='collectData' style='z-index:9000;position:absolute;top:0;right:0;width:50px;height:50px' src='http://localhost:3000/assets/fire.svg'>";
+document.body.innerHTML += "<img class='fireIcon' onclick=cleanCoordinatesArray() id='collectData' style='z-index:9000;position:absolute;top:0;right:0;width:50px;height:50px' src='http://mousemapper.herokuapp.com/assets/fire.svg'>";
 
 document.body.innerHTML += "<div id='heatMapContainer' style='z-index:-1;height:1000px;border:2px solid black;position:absolute;top:4px;left:4px'></div>";
 document.getElementById('heatMapContainer').style.width = windowLength;
