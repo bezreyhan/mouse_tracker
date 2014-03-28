@@ -13,14 +13,113 @@
  */
 @import "bootstrap";
 
-table, th, td{
-  border: 1px solid black;
-  margin: 0 auto;
-  min-width: 10px;
+/*-------------------------------------------
+            Sign Up Page
+-------------------------------------------*/
+.mouseIcon {
+  width: 40px;
+  height: 40px;
+}
+
+.navbar-brand{
+  padding: 6px 15px;
+}
+
+.navbar .logIn {
+  padding: 10px 14px;
+  margin-top: 4px;
+  font-family: 'Open Sans', helvetiva;
+  font-size: 16px;
+  background-color: #72FDF7;
+}
+
+.navbar .btn:hover{
+  background-color: black;
+}
+
+.navbarGreeting{
+  padding: 15px;
+}
+
+.heatMapImg {
+  background-image: url("http://localhost:3000/assets/heat_map.png");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Open Sans', helvetiva;
+  font-size: 72px; 
+}
+
+.titleMouse{
+  font-weight: 800;
+}
+
+.titleMapper{
+  font-weight: bold;
+  font-style: italic;
+}
+
+label{
+  font-size: 18px;
+  font-family: 'Open Sans', helvetiva;
+  font-weight: 400;
+}
+
+
+.signUpBtn{
+  font-size: 16px;
+  font-family: 'Open Sans', helvetiva;
+  color: white;
+  background-color: black;
+  margin-right: 5px;
+}
+
+.signUpBtn:hover{
+  background-color: rgb(252, 127, 10);
+}
+
+.mouseAttribution{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 9px;
+  margin-left: 5px;
+}
+
+/*-------------------------------------------
+            END - Sign Up Page 
+-------------------------------------------*/
+.tableShell{
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+table{
+  font-family: 'Open Sans', helvetiva;
+}
+
+th{
+  font-size: 16px;
+}
+
+td{
+  font-size: 14px;
+  font-weight: 400;
 }
 
 iframe {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.url{
+  font-size: 60px;
 }

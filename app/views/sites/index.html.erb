@@ -1,16 +1,34 @@
 
-<table>
-  <th>URL</th>
-  <th>Date</th>
-  <% if @sites %>
-    <% @sites.each do |site| %>
-      <tr>
-        <td><%= link_to site.url, site_interactions_path(site.id) %></td>
-      </tr>
-    <% end %>
-  <% else %> 
-    <h2>No Sites have been tracked yet</h2>     
-  <% end %>   
-</table>
 
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <h1>Sites Your Tracking</h1>
+  </div>
+  <div class="col-md-2">
+</div>  
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="tableShell">
+      <table class="table table-striped">
+        <th>#</th>
+        <th>URL</th>
+        <th># of Visits</th>
+        <% if @sites %>
+          <% @sites.each_with_index do |site, index| %>
+            <tr>
+              <td><%= index %></td>
+              <td><%= site.url %></td>
+              <td><%= link_to site.interactions.length, site_interactions_path(site.id) %></td>
+            </tr>
+          <% end %>
+        <% else %> 
+          <h2>No Sites have been tracked yet</h2>     
+        <% end %>   
+      </table>
+    </div>
+  </div>
+  <div class="col-md-4"></div>
+</div>
 

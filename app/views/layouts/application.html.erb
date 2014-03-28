@@ -3,16 +3,21 @@
 <head>
   <title>MouseTracker</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800,400' rel='stylesheet' type='text/css'>
  
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render "layouts/navbar" %>
+<% if controller_name != "interactions" %>  
+  <%= render "layouts/navbar" %>
+<% end %>   
 <%= flash[:notice] %> 
 <%= flash[:error] %> 
 <%= yield %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
-<%= params %> 
+<%#= params %> 
+<%#= controller_name %> 
+
 </body>
 </html>
