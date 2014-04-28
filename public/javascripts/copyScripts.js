@@ -28,12 +28,12 @@ window.onload = function() {
       console.log(coordinatesString);
       $.ajax({
         type: "POST",
-        url: 'http://mousemapper.herokuapp.com/interactions',
+        url: 'http://localhost:3000/interactions',
         // datatType: 'jsonp',
         data: {
           interaction: {
             move: coordinatesString,
-            user_id: mouseTrackerUserId,
+            user_id: window.mouseTrackerUserId || "none",
             time: timeOfLoad,
             url: document.URL,
             window_width: windowLength,
@@ -42,6 +42,8 @@ window.onload = function() {
         },
         success: function(response) {
           alert('works');
+          console.log(mouseTrackerUserId);
+          console.log(smitty);
         }
       });
     }, 9000);

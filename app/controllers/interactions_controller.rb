@@ -22,6 +22,7 @@ class InteractionsController < ApplicationController
   end
 
   def create
+    # binding.pry
     site = Site.find_or_create_by(url: params["interaction"]["url"])
     @interaction = Interaction.new(int_params)
     @interaction.site_id = site.id
