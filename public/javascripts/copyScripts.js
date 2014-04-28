@@ -26,24 +26,28 @@ window.onload = function() {
   window.setInterval(
     function sendData() {
       console.log(coordinatesString);
-      $.ajax({
-        type: "POST",
-        url: 'http://localhost:3000/interactions',
-        // datatType: 'jsonp',
-        data: {
-          interaction: {
-            move: coordinatesString,
-            user_id: window.mouseTrackerUserId || "none",
-            time: timeOfLoad,
-            url: document.URL,
-            window_width: windowLength,
-            body_height: bodyHeight
+      if (coordinatesString !== "") {
+        $.ajax({
+          type: "POST",
+          url: 'http://localhost:3000/interactions',
+          // datatType: 'jsonp',
+          data: {
+            interaction: {
+              move: coordinatesString,
+              user_id: window.mouseTrackerUserId || "none",
+              time: timeOfLoad,
+              url: document.URL,
+              window_width: windowLength,
+              body_height: bodyHeight
+            }
+          },
+          success: function(response) {
+            console.log('Data Sent');
           }
-        },
-        success: function(response) {
-          console.log('Data Sent');
-        }
-      });
+        });
+      } else {
+        console.log("data not sent");
+      }
     }, 9000);
 
   // function displayMap() {
