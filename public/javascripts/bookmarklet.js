@@ -64,7 +64,7 @@ function matchFound(obj) {
   }
 }
 
-window.setInterval(
+// window.setInterval(
   function sendData() {
     console.log(coordinatesString);
     $.ajax({
@@ -86,7 +86,8 @@ window.setInterval(
         console.log('Data Sent');
       }
     });
-  }, 9000);
+  }
+// , 9000);
 
 function displayMap() {
   console.log("displayMap is fired");
