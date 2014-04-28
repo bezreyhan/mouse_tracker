@@ -23,27 +23,28 @@ mouseTrackTimer = window.setInterval(function() {
 }, 10);
 
 
-sendCoordTimer = window.setInterval(function sendData() {
-  console.log(coordinatesString);
-  $.ajax({
-    type: "POST",
-    url: 'http://mousemapper.herokuapp.com/interactions',
-    datatType: 'jsonp',
-    data: {
-      interaction: {
-        move: coordinatesString,
-        user_id: mouseTrackerUserId,
-        time: timeOfLoad,
-        url: document.URL,
-        window_width: windowLength,
-        body_height: bodyHeight
+window.setInterval(
+  function sendData() {
+    console.log(coordinatesString);
+    $.ajax({
+      type: "POST",
+      url: 'http://mousemapper.herokuapp.com/interactions',
+      // datatType: 'jsonp',
+      data: {
+        interaction: {
+          move: coordinatesString,
+          user_id: mouseTrackerUserId,
+          time: timeOfLoad,
+          url: document.URL,
+          window_width: windowLength,
+          body_height: bodyHeight
+        }
+      },
+      success: function(response) {
+        alert('works');
       }
-    },
-    success: function(response) {
-      alert('works');
-    }
-  });
-}, 9000);
+    });
+  }, 9000);
 
 function displayMap() {
   console.log("displayMap is fired");

@@ -3,7 +3,6 @@ class Interaction < ActiveRecord::Base
   belongs_to :site
 end
 
-
 private
 
 # coords_string = "287,507;287,507;298,386;303,335;306,312;308,298;"

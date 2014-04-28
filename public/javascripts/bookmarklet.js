@@ -64,30 +64,29 @@ function matchFound(obj) {
   }
 }
 
-// sendCoordTimer = window.setInterval(
-function sendData() {
-  console.log(coordinatesString);
-  $.ajax({
-    type: "POST",
-    url: 'http://mousemapper.herokuapp.com/interactions',
-    crossDomain: true,
-    datatType: 'jsonp',
-    data: {
-      interaction: {
-        move: coordinatesString,
-        user_id: mouseTrackerUserId,
-        time: timeOfLoad,
-        url: document.URL,
-        window_width: windowLength,
-        body_height: bodyHeight
+window.setInterval(
+  function sendData() {
+    console.log(coordinatesString);
+    $.ajax({
+      type: "POST",
+      url: 'http://mousemapper.herokuapp.com/interactions',
+      crossDomain: true,
+      // datatType: 'jsonp',
+      data: {
+        interaction: {
+          move: coordinatesString,
+          user_id: mouseTrackerUserId,
+          time: timeOfLoad,
+          url: document.URL,
+          window_width: windowLength,
+          body_height: bodyHeight
+        }
+      },
+      success: function(response) {
+        console.log('Data Sent');
       }
-    },
-    success: function(response) {
-      console.log('Data Sent');
-    }
-  });
-}
-// }, 9000);
+    });
+  }, 9000);
 
 function displayMap() {
   console.log("displayMap is fired");
