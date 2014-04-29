@@ -29,7 +29,7 @@ window.onload = function() {
       if (coordinatesString !== "") {
         $.ajax({
           type: "POST",
-          url: 'http://localhost:3000/interactions',
+          url: 'http://mousemapper.herokuapp.com/interactions',
           // datatType: 'jsonp',
           data: {
             interaction: {
