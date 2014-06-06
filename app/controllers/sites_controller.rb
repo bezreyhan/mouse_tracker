@@ -1,15 +1,4 @@
 class SitesController < ApplicationController
-  def new
-  end
-
-  def create
-  end
-
-  def destroy
-  end
-
-  def show
-  end
 
   def index
     @sites = User.find(current_user.id).sites.uniq

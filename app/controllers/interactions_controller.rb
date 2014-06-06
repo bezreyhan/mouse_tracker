@@ -48,12 +48,7 @@ class InteractionsController < ApplicationController
   end
 
   def combined_interactions_site
-    site = Site.find(params[:id])
-    # @interaction is temporary. In this view we are actually rendering all the interactions.
-    # @interaction is a way to choose the iframes width and height. 
-    # In the future, the coordinates should be relative to their window size, rather than absolute 
-    # values. For instance, we should take the x-coordinate and divide it by the width. This 
-    # number tells us the percent of the width taht they were looking at. 
+    site = Site.find(params[:id]) 
     @interaction = site.interactions.first
     @combined_coords = combine_coords(site.interactions)
     @url = site.url
